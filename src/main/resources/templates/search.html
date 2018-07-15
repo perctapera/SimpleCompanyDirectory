@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Landing Page</title>
+</head>
+<body>
+
+<!--<a href="/" th:href="@{/}">Search</a>-->
+<a href="/userEdit" th:href="@{/userEdit}">Sign Up</a>
+<a href="/login" th:href="@{/login}">Login</a>
+<a href="/userList" th:href="@{/userList}">View All Users</a>
+
+<form class="form-group" action="/search" th:action="@{/search}" method="post">
+<div>
+    <label for="search">Search</label>
+    <input type="text" class="form-control" id="search" th:field="${search}" />
+
+   </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Company Name</th>
+        <th>Business Category</th>
+        <th>Services</th>
+        <th>Company Description</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="search : ${companyList}">
+        <td th:text="${search.companyName}">1</td>
+        <td th:text="${search.businessCategory}">Test</td>
+        <td th:text="${search.services}">Test</td>
+        <td th:text="${search.companyDescription}">Test</td>
+
+        <!--&lt;!&ndash;<a href="/notesEdit/1" th:href="@{/userCreate/__${notes.id}__}">Edit</a>&ndash;&gt;-->
+        <!--<a href="/userEdit/1" th:href="@{/userEdit/__${user.id}__}">Edit</a>-->
+        <!--<a href="/userDelete/1" th:href="@{/userDelete/__${user.id}__}">Delete</a>-->
+        <!--</td>-->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
